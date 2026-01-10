@@ -13,12 +13,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
+@Entity
 public class Notes extends BaseModel {
 
 	@Id
@@ -31,5 +32,10 @@ public class Notes extends BaseModel {
 
 	@ManyToOne
 	private Category category;
+	
+	@ManyToOne
+	private Notes notes;
+
+	
 
 }
