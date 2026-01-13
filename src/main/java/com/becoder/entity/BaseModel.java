@@ -32,4 +32,7 @@ public abstract class BaseModel {
 	@LastModifiedDate
 	@Column(insertable = false)
 	private Date updatedOn;
+	
+	 @Column(nullable = false)
+	 private Boolean isDeleted = false;
 }
