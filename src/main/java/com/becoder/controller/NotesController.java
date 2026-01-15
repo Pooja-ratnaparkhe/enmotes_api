@@ -34,8 +34,7 @@ public class NotesController {
 		return CommonUtil.createErrorResponseMessage("Notes not saved", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-
-	@GetMapping
+@GetMapping
 	public ResponseEntity<?> getAllNotes() {
 		List<NotesDto> notes = notesService.getAllNotes();
 		if (CollectionUtils.isEmpty(notes)) {

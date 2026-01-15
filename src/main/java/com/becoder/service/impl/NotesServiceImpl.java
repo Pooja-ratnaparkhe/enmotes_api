@@ -10,8 +10,6 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -38,29 +36,14 @@ public class NotesServiceImpl implements NotesService {
     private ModelMapper mapper;
 
 
+
 //	@Autowired
 //	private CategoryRepository categoryRepository;
 
     @Autowired
-    private CategoryRepository categoryRepo;
+    private CategoryRepository categoryRepository;
 
-    @Override
-    public Boolean saveNotes(NotesDto notesDto) throws Exception {
-
-
-        // category validation
-        checkCategoryExist(notesDto.getCategory());
-
-        Notes notes = mapper.map(notesDto, Notes.class);
-        Notes saveNotes = notesRepo.save(notes);
-
-        return !ObjectUtils.isEmpty(saveNotes);
-    }
-
-    private void checkCategoryExist(CategoryDto category) throws Exception {
-        categoryRepo.findById(category.getId())
-            .orElseThrow(() -> new ResourceNotFoundException("Category id invalid"));
-    }
+   
 
 
 	@Override
@@ -82,6 +65,28 @@ public class NotesServiceImpl implements NotesService {
 
 
 
+
+    @Autowired
+    private CategoryRepository categoryRepo;
+
+    @Override
+    public Boolean saveNotes(NotesDto notesDto) throws Exception {
+
+        // category validation
+        checkCategoryExist(notesDto.getCategory());
+
+        Notes notes = mapper.map(notesDto, Notes.class);
+        Notes saveNotes = notesRepo.save(notes);
+
+        return !ObjectUtils.isEmpty(saveNotes);
+    }
+
+    private void checkCategoryExist(CategoryDto category) throws Exception {
+        categoryRepo.findById(category.getId())
+            .orElseThrow(() -> new ResourceNotFoundException("Category id invalid"));
+    }
+
+
     @Override
     public List<NotesDto> getAllNotes() {
         return notesRepo.findAll()
@@ -89,7 +94,6 @@ public class NotesServiceImpl implements NotesService {
                 .map(note -> mapper.map(note, NotesDto.class))
                 .toList();
     }
-
 
     @Override
     public Boolean copyNotes(Integer id) throws Exception {

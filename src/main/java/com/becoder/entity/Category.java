@@ -20,9 +20,9 @@ import lombok.Setter;
 @EntityListeners(AuditingEntityListener.class)
 public class Category extends BaseModel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Integer id;
 
 	private String name;
 

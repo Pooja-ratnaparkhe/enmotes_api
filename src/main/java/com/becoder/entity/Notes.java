@@ -7,6 +7,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+
 @Builder
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -35,8 +38,14 @@ public class Notes extends BaseModel {
 	@ManyToOne
 	private Category category;
 	
+//	@ManyToOne
+//	@JoinColumn(name = "category_id")   // DB column name
+//	private Category category;
+
 	@ManyToOne
 	private Notes notes;
 
+
+	
 
 }
