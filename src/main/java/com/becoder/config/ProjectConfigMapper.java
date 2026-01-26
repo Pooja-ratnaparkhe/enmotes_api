@@ -6,10 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 
 @Configuration
-public class ProjectConfig {
+public class ProjectConfigMapper {
 
 	@Bean
 	public ModelMapper mapper() {
+		
 		return new ModelMapper();
 	}
 
