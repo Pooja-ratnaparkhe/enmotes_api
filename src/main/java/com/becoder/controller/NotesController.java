@@ -17,13 +17,13 @@ import com.becoder.service.NotesService;
 import com.becoder.util.CommonUtil;
 
 @RestController
-@RequestMapping("/api/v1/notes")
+@RequestMapping("/notes")
 public class NotesController {
 
 	@Autowired
 	private NotesService notesService;
 
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<?> saveNotes(@RequestBody NotesDto notesDto) throws Exception {
 		Boolean saveNotes = notesService.saveNotes(notesDto);
 		if (saveNotes) {
@@ -32,7 +32,7 @@ public class NotesController {
 		return CommonUtil.createErrorResponseMessage("Notes not saved", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<?> getAllNotes() {
 		List<NotesDto> notes = notesService.getAllNotes();
 		if (CollectionUtils.isEmpty(notes)) {

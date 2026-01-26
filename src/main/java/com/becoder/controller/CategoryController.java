@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping("/category")
 public class CategoryController {
 
 	@Autowired
@@ -41,7 +41,7 @@ public class CategoryController {
 		}
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<?> getAllCategory() {
 		List<CategoryDto> allCategory = categoryService.getAllCategory();
 		if (CollectionUtils.isEmpty(allCategory)) {
